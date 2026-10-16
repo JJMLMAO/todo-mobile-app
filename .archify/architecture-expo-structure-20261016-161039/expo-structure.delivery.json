@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "b789a4e0-1504-4d61-a005-e710b8cbf81a",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/joern/Library/Application Support/Claude/scratch-workspaces/660d2110-9ed9-4089-adcc-eccdb8a1cd35/a2610a9e-bd58-49af-95c3-d7868e97ae66/scratch-2026-10-16-200c7f/.archify/architecture-expo-structure-20261016-161039/candidate.json",
+  "output": "/Users/joern/Library/Application Support/Claude/scratch-workspaces/660d2110-9ed9-4089-adcc-eccdb8a1cd35/a2610a9e-bd58-49af-95c3-d7868e97ae66/scratch-2026-10-16-200c7f/.archify/architecture-expo-structure-20261016-161039/expo-structure.html",
+  "specification": {
+    "sha256": "59d7048ce21bbb7e5e5db7ccbf397a3cb0b6309f5fe3a69493f536369f659a03",
+    "bytes": 5806
+  },
+  "artifact": {
+    "sha256": "5203ca2242a15a8dee1996551565e380c64831ff0c76ec0a51266e55f103670a",
+    "bytes": 765873
+  }
+}

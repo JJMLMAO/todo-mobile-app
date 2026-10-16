@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "How todo-mobile-app Is Wired (Expo Router)",
+    "output": ".archify/architecture-expo-structure-20261016-161039/expo-structure.html",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "external": {
+          "label": "Your phone"
+        },
+        "cloud": {
+          "label": "Config & entry point"
+        },
+        "frontend": {
+          "label": "Routes in src/app (screens & layouts)"
+        },
+        "backend": {
+          "label": "Reusable pieces (components, hooks)"
+        },
+        "database": {
+          "label": "Static files & constants"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "phone",
+      "type": "external",
+      "label": "Expo Go",
+      "sublabel": "on your phone",
+      "pos": [
+        40,
+        220
+      ],
+      "size": [
+        130,
+        64
+      ]
+    },
+    {
+      "id": "entry",
+      "type": "cloud",
+      "label": "package.json",
+      "sublabel": "main: expo-router/entry",
+      "pos": [
+        290,
+        220
+      ],
+      "size": [
+        150,
+        64
+      ]
+    },
+    {
+      "id": "config",
+      "type": "cloud",
+      "label": "app.json",
+      "sublabel": "name, icons, plugins",
+      "pos": [
+        290,
+        60
+      ],
+      "size": [
+        150,
+        64
+      ]
+    },
+    {
+      "id": "layout",
+      "type": "frontend",
+      "label": "_layout.tsx",
+      "sublabel": "root layout: theme + tabs",
+      "pos": [
+        540,
+        220
+      ],
+      "size": [
+        160,
+        64
+      ]
+    },
+    {
+      "id": "tabs",
+      "type": "backend",
+      "label": "AppTabs",
+      "sublabel": "tab bar (native / web)",
+      "pos": [
+        800,
+        220
+      ],
+      "size": [
+        160,
+        64
+      ]
+    },
+    {
+      "id": "home",
+      "type": "frontend",
+      "label": "index.tsx",
+      "sublabel": "route /  (Home tab)",
+      "pos": [
+        1070,
+        130
+      ],
+      "size": [
+        160,
+        64
+      ]
+    },
+    {
+      "id": "explore",
+      "type": "frontend",
+      "label": "explore.tsx",
+      "sublabel": "route /explore",
+      "pos": [
+        1070,
+        310
+      ],
+      "size": [
+        160,
+        64
+      ]
+    },
+    {
+      "id": "ui",
+      "type": "backend",
+      "label": "src/components",
+      "sublabel": "ThemedText, ThemedView\u2026",
+      "pos": [
+        1340,
+        220
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "theme",
+      "type": "database",
+      "label": "constants + hooks",
+      "sublabel": "Colors, Spacing, useTheme",
+      "pos": [
+        1340,
+        400
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "assets",
+      "type": "database",
+      "label": "assets/images",
+      "sublabel": "icons, splash, pictures",
+      "pos": [
+        800,
+        400
+      ],
+      "size": [
+        160,
+        64
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "src/app \u2014 every file here is a route",
+      "wraps": [
+        "layout",
+        "home",
+        "explore"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "scan",
+      "from": "phone",
+      "to": "entry",
+      "label": "scan QR, load JS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "configures",
+      "from": "config",
+      "to": "entry",
+      "label": "configures app",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "boot",
+      "from": "entry",
+      "to": "layout",
+      "label": "boots router"
+    },
+    {
+      "id": "renders-tabs",
+      "from": "layout",
+      "to": "tabs",
+      "label": "renders"
+    },
+    {
+      "id": "tab-home",
+      "from": "tabs",
+      "to": "home",
+      "label": "name=index"
+    },
+    {
+      "id": "tab-explore",
+      "from": "tabs",
+      "to": "explore",
+      "label": "name=explore"
+    },
+    {
+      "id": "home-ui",
+      "from": "home",
+      "to": "ui",
+      "label": "imports"
+    },
+    {
+      "id": "explore-ui",
+      "from": "explore",
+      "to": "ui",
+      "label": "imports"
+    },
+    {
+      "id": "ui-theme",
+      "from": "ui",
+      "to": "theme",
+      "label": "colors, spacing",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "tab-icons",
+      "from": "tabs",
+      "to": "assets",
+      "label": "require() icons",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "File-based routing",
+      "items": [
+        "A file in src/app becomes a screen: index.tsx is /, explore.tsx is /explore",
+        "_layout.tsx wraps every screen in its folder (theme, tabs, splash)",
+        "Add src/app/settings.tsx and /settings exists \u2014 no router config to edit"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Reusable code lives outside src/app",
+      "items": [
+        "src/components: UI building blocks, never routes",
+        "src/hooks + src/constants: shared logic and the theme",
+        "@/ is an alias for src/ (from tsconfig.json)"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Platform files",
+      "items": [
+        "app-tabs.web.tsx replaces app-tabs.tsx on web; the phone uses the plain file",
+        "Same trick for use-color-scheme.web.ts and animated-icon.web.tsx"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Safe to ignore for now",
+      "items": [
+        ".expo/ \u2014 generated cache and typed-route types",
+        "scripts/reset-project.js \u2014 run once to clear the starter screens",
+        "expo-env.d.ts, .vscode/ \u2014 editor/TypeScript glue"
+      ]
+    }
+  ]
+}
