@@ -4,12 +4,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 import { ThemedText } from "@/components/themed-text";
 
-export default function HelloThereScreen() {
+export default function QuestScreen() {
     return (
         <ThemedView style={styles.container}>
             <SafeAreaView style={styles.safeArea}>
                 <ThemedText type="title" style={styles.title}>
-                    Welcome to nigga tab
+                    Quests
                 </ThemedText>
 
             </SafeAreaView>
