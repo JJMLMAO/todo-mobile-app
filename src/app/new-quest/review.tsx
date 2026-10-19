@@ -9,16 +9,22 @@ import { QUEST_DIFFICULTIES } from '@/constants/quest-difficulties';
 import { QUEST_TYPES } from '@/constants/quest-types';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useQuestDraft } from '@/hooks/use-quest-draft';
+import { useQuests } from '@/hooks/use-quests';
 
 export default function QuestReviewScreen() {
   const { draft, resetDraft } = useQuestDraft();
+  const { addQuest } = useQuests();
   const typeLabel = QUEST_TYPES.find((t) => t.value === draft.type)?.label;
   const difficultyLabel = QUEST_DIFFICULTIES.find((d) => d.value === draft.difficulty)?.label;
+  const { title, type, difficulty } = draft;
+  const isComplete = title.length > 0 && type !== undefined && difficulty !== undefined;
 
   function createQuest() {
-    // ponytail: quest isn't saved anywhere yet, persist `draft` here once storage exists
+    if (!isComplete) return;
+    addQuest({ title, type, difficulty, notes: draft.notes.trim() });
     resetDraft();
-    router.dismissTo('/');
+    router.dismissAll();
+    router.navigate('/quest');
   }
 
   return (
@@ -31,7 +37,12 @@ export default function QuestReviewScreen() {
           <Row label="Notes" value={draft.notes.trim() || '—'} />
         </ThemedView>
 
-        <PrimaryButton label="Create quest" onPress={createQuest} style={styles.create} />
+        <PrimaryButton
+          label="Create quest"
+          disabled={!isComplete}
+          onPress={createQuest}
+          style={styles.create}
+        />
       </SafeAreaView>
     </ThemedView>
   );
