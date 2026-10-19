@@ -21,10 +21,6 @@
       "predictiveBackGestureEnabled": false,
       "package": "com.jodev211.todomobileapp"
     },
-    "web": {
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
     "plugins": [
       "expo-router",
       [
