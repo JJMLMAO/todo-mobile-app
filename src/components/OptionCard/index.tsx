@@ -1,15 +1,10 @@
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable } from 'react-native';
 
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Spacing } from '@/constants/theme';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 
-type OptionCardProps = {
-  label: string;
-  hint: string;
-  selected: boolean;
-  onPress: () => void;
-};
+import { styles } from './styled';
+import type { OptionCardProps } from './types';
 
 export function OptionCard({ label, hint, selected, onPress }: OptionCardProps) {
   return (
@@ -27,14 +22,3 @@ export function OptionCard({ label, hint, selected, onPress }: OptionCardProps) 
     </Pressable>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    padding: Spacing.three,
-    borderRadius: Spacing.three,
-    gap: Spacing.one,
-  },
-  pressed: {
-    opacity: 0.7,
-  },
-});

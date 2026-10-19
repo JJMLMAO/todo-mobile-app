@@ -2,14 +2,14 @@ import { router } from 'expo-router';
 import { ScrollView, StyleSheet, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { OptionCard } from '@/components/option-card';
-import { PrimaryButton } from '@/components/primary-button';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { OptionCard } from '@/components/OptionCard';
+import { PrimaryButton } from '@/components/PrimaryButton';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 import { QUEST_DIFFICULTIES } from '@/constants/quest-difficulties';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
-import { useQuestDraft } from '@/hooks/use-quest-draft';
-import { useTheme } from '@/hooks/use-theme';
+import { useQuestDraft } from '@/hooks/useQuestDraft';
+import { useTheme } from '@/hooks/useTheme';
 
 export default function QuestDetailsScreen() {
   const theme = useTheme();

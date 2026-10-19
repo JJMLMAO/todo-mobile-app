@@ -1,12 +1,12 @@
 import { FlatList, Pressable, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { ThemedText } from "@/components/themed-text";
-import { ThemedView } from "@/components/themed-view";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import { QUEST_DIFFICULTIES } from "@/constants/quest-difficulties";
 import { QUEST_TYPES } from "@/constants/quest-types";
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-import { questXp, useQuests, type Quest } from "@/hooks/use-quests";
+import { questXp, useQuests, type Quest } from "@/hooks/useQuests";
 
 export default function QuestScreen() {
     const { quests } = useQuests();

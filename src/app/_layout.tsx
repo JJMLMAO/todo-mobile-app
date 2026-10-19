@@ -2,8 +2,8 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
 import { Stack } from 'expo-router/stack';
 import { useColorScheme } from 'react-native';
 
-import { QuestDraftProvider } from '@/hooks/use-quest-draft';
-import { QuestsProvider } from '@/hooks/use-quests';
+import { QuestDraftProvider } from '@/hooks/useQuestDraft';
+import { QuestsProvider } from '@/hooks/useQuests';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();

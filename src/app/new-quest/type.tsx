@@ -2,13 +2,13 @@ import { router } from 'expo-router';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { OptionCard } from '@/components/option-card';
-import { PrimaryButton } from '@/components/primary-button';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { OptionCard } from '@/components/OptionCard';
+import { PrimaryButton } from '@/components/PrimaryButton';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 import { QUEST_TYPES } from '@/constants/quest-types';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
-import { useQuestDraft } from '@/hooks/use-quest-draft';
+import { useQuestDraft } from '@/hooks/useQuestDraft';
 
 export default function QuestTypeScreen() {
   const { draft, updateDraft } = useQuestDraft();

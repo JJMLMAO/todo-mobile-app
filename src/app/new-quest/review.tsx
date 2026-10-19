@@ -2,14 +2,14 @@ import { router } from 'expo-router';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { PrimaryButton } from '@/components/primary-button';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { PrimaryButton } from '@/components/PrimaryButton';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 import { QUEST_DIFFICULTIES } from '@/constants/quest-difficulties';
 import { QUEST_TYPES } from '@/constants/quest-types';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
-import { useQuestDraft } from '@/hooks/use-quest-draft';
-import { useQuests } from '@/hooks/use-quests';
+import { useQuestDraft } from '@/hooks/useQuestDraft';
+import { useQuests } from '@/hooks/useQuests';
 
 export default function QuestReviewScreen() {
   const { draft, resetDraft } = useQuestDraft();

@@ -2,12 +2,12 @@ import { router } from 'expo-router';
 import { StyleSheet, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { PrimaryButton } from '@/components/primary-button';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { PrimaryButton } from '@/components/PrimaryButton';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-import { useQuestDraft } from '@/hooks/use-quest-draft';
-import { useTheme } from '@/hooks/use-theme';
+import { useQuestDraft } from '@/hooks/useQuestDraft';
+import { useTheme } from '@/hooks/useTheme';
 
 export default function HomeScreen() {
   const theme = useTheme();
