@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     borderRadius: Spacing.three,
   },
   pressed: {
-    opacity: 0.7,
+    opacity: 0.8,
   },
   disabled: {
     opacity: 0.4,

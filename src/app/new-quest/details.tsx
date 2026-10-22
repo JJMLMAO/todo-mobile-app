@@ -9,6 +9,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { QUEST_DIFFICULTIES } from '@/constants/quest-difficulties';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useQuestDraft } from '@/hooks/useQuestDraft';
+import { questXp } from '@/hooks/useQuests';
 import { useTheme } from '@/hooks/useTheme';
 
 export default function QuestDetailsScreen() {
@@ -26,6 +27,8 @@ export default function QuestDetailsScreen() {
               key={option.value}
               label={option.label}
               hint={option.hint}
+              // Type is picked on the previous step; 'side' (×1) shows the base XP if it's somehow missing
+              badge={`+${questXp({ type: draft.type ?? 'side', difficulty: option.value })} XP`}
               selected={draft.difficulty === option.value}
               onPress={() => updateDraft({ difficulty: option.value })}
             />

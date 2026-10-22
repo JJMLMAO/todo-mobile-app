@@ -1,20 +1,26 @@
-import { Pressable } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { useTheme } from '@/hooks/useTheme';
 
 import { styles } from './styled';
 import type { PrimaryButtonProps } from './types';
 
 export function PrimaryButton({ label, onPress, disabled, style }: PrimaryButtonProps) {
+  const theme = useTheme();
+
   return (
     <Pressable
       disabled={disabled}
       onPress={onPress}
+      accessibilityRole="button"
+      accessibilityState={{ disabled }}
       style={({ pressed }) => [style, pressed && styles.pressed, disabled && styles.disabled]}>
-      <ThemedView type="backgroundSelected" style={styles.button}>
-        <ThemedText type="smallBold">{label}</ThemedText>
-      </ThemedView>
+      <View style={[styles.button, { backgroundColor: theme.accent }]}>
+        <ThemedText type="smallBold" themeColor="onAccent">
+          {label}
+        </ThemedText>
+      </View>
     </Pressable>
   );
 }

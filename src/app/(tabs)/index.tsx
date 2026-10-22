@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { StyleSheet, TextInput } from 'react-native';
+import { Keyboard, Pressable, StyleSheet, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { PrimaryButton } from '@/components/PrimaryButton';
@@ -20,27 +20,33 @@ export default function HomeScreen() {
   }
 
   return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="subtitle">What do you want to do?</ThemedText>
+    // Tapping anywhere outside the input closes the keyboard; accessible={false} keeps screen readers on the real controls
+    <Pressable onPress={Keyboard.dismiss} accessible={false} style={styles.dismissArea}>
+      <ThemedView style={styles.container}>
+        <SafeAreaView style={styles.safeArea}>
+          <ThemedText type="subtitle">What do you want to do?</ThemedText>
 
-        <TextInput
-          value={draft.title}
-          onChangeText={(title) => updateDraft({ title })}
-          placeholder="e.g. Clean my room"
-          placeholderTextColor={theme.textSecondary}
-          returnKeyType="next"
-          onSubmitEditing={() => canContinue && goNext()}
-          style={[styles.input, { color: theme.text, backgroundColor: theme.backgroundElement }]}
-        />
+          <TextInput
+            value={draft.title}
+            onChangeText={(title) => updateDraft({ title })}
+            placeholder="e.g. Clean my room"
+            placeholderTextColor={theme.textSecondary}
+            returnKeyType="next"
+            onSubmitEditing={() => canContinue && goNext()}
+            style={[styles.input, { color: theme.text, backgroundColor: theme.backgroundElement }]}
+          />
 
-        <PrimaryButton label="Next" disabled={!canContinue} onPress={goNext} />
-      </SafeAreaView>
-    </ThemedView>
+          <PrimaryButton label="Next" disabled={!canContinue} onPress={goNext} />
+        </SafeAreaView>
+      </ThemedView>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
+  dismissArea: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     flexDirection: 'row',
