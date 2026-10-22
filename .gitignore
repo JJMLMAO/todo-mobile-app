@@ -41,3 +41,6 @@ example
 # generated native folders
 /ios
 /android
+
+# archify: keep only the rendered diagrams
+.archify/**/*.json
